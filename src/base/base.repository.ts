@@ -1,6 +1,6 @@
 // import { NotFound } from '../../exceptions/not-found.exception';
 import { DocumentType } from '@typegoose/typegoose';
-import { AnyKeys, Document, FilterQuery, LeanDocument } from 'mongoose';
+import { AnyKeys, Document, FilterQuery } from 'mongoose';
 import { ModelType } from 'typegoose';
 // import { NOT_FOUND } from '../constant/error-message';
 
@@ -64,3 +64,48 @@ export class BaseRepository<T> {
       return createdModel.toObject<T>();
    }
 }
+
+//---------------------------- With @nestjs/mongoose-------------------------------\\
+// import EventEmitter from 'events';
+// import {
+//   Aggregate,
+//   AnyKeys,
+//   AnyObject,
+//   Document,
+//   FilterQuery,
+//   Model,
+//   UpdateQuery,
+// } from 'mongoose';
+// import { BaseSchema } from './base.schema';
+// export class BaseRepository<
+//   Schema extends BaseSchema,
+//   T extends Document,
+// > extends EventEmitter {
+//   protected primaryKey = '_id';
+
+//   constructor(
+//     protected readonly model: Model<T>,
+//     protected readonly aggModel?: Aggregate<any>,
+//   ) {
+//     super();
+//     this.model = model;
+//     this.aggModel = aggModel;
+//   }
+
+//   async create(entity: AnyKeys<Schema> & AnyObject): Promise<T> {
+//     return new this.model(entity).save();
+//   }
+
+//   async createOrUpdate(entity: UpdateQuery<Schema>): Promise<T> {
+//     let model = await this.model.findByIdAndUpdate(entity._id, entity);
+//     if (!model) model = await new this.model(entity).save();
+//     return model;
+//   }
+
+//   async findAndUpdate(
+//     filer: FilterQuery<T>,
+//     update: UpdateQuery<T>,
+//   ): Promise<T> {
+//     return this.model.findByIdAndUpdate();
+//   }
+// }

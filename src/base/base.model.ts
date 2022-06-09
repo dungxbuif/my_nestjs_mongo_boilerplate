@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { modelOptions, mongoose, prop, Severity } from '@typegoose/typegoose';
+import { modelOptions, prop, Severity } from '@typegoose/typegoose';
 import { Document } from 'mongoose';
 
 @modelOptions({
@@ -27,3 +27,21 @@ export class BaseModel extends Document {
    @prop()
    updatedAt: Date;
 }
+
+//---------------------------- With @nestjs/mongoose-------------------------------\\
+// import { Prop, Schema } from '@nestjs/mongoose';
+// import { Types } from 'mongoose';
+
+// @Schema()
+// export class BaseSchema {
+//   @Prop()
+//   _id?: string;
+//   @Prop()
+//   created_at?: Date;
+//   @Prop()
+//   updated_at?: Date;
+//   @Prop()
+//   __v?: string;
+// }
+
+// export type IObjectId = Types.ObjectId | string;
